@@ -69,7 +69,7 @@ app.post("/movies", async (req, res) => {
 // Update Movie:
 app.patch("/movies/:id", async (req, res) => {
     try {
-        const updateMovie = await Movie.findByIdAndUpdate(req.params.id, req.body);
+        const updateMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, {new: true});
         return res.status(200).send(updateMovie);
     } catch (err) {
         return res.send(500).send(err.message);
